@@ -60,14 +60,14 @@ export class Pair {
     const tokenAmounts = currencyAmountA.currency.sortsBefore(tokenAmountB.currency) // does safety checks
       ? [currencyAmountA, tokenAmountB]
       : [tokenAmountB, currencyAmountA];
-      const token0Decimals = tokenAmounts[0].currency.decimals;
-      const token1Decimals = tokenAmounts[1].currency.decimals;
-      const lpDecimals = token0Decimals !== token1Decimals ? (token0Decimals + token1Decimals) / 2 : token0Decimals;
+    const tokenADecimals = tokenAmounts[0].currency.decimals;
+    const tokenBDecimals = tokenAmounts[1].currency.decimals;
+    const decimals = tokenADecimals !== tokenBDecimals ? (tokenADecimals + tokenBDecimals) / 2 : tokenADecimals;
     this.liquidityToken = new Token(
       tokenAmounts[0].currency.chainId,
       // Pair.getAddress(tokenAmounts[0].currency, tokenAmounts[1].currency),
       'cx0000000000000000000000000000000000000002',
-      lpDecimals,
+      decimals,
       'BALN-V2',
       'Balanced V2',
     );
