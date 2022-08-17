@@ -57,9 +57,15 @@ export class Pair {
       baseAddress?: string;
     },
   ) {
-    const tokenAmounts = currencyAmountA.currency.sortsBefore(tokenAmountB.currency) // does safety checks
-      ? [currencyAmountA, tokenAmountB]
-      : [tokenAmountB, currencyAmountA];
+    let tokenAmounts = [currencyAmountA, tokenAmountB];
+    // Also, as a rule, sICX is always on the right side (except for sICX/bnUSD). bnUSD is also always on the right side (never any exceptions)
+    if (currencyAmountA.currency.symbol === 'bnUSD' ||
+      (tokenAmountB.currency.symbol === 'sICX' && currencyAmountA.currency.symbol === 'bnUSD') ||
+      (currencyAmountA.currency.symbol === 'sICX' && tokenAmountB.currency.symbol !== 'bnUSD')) {
+      tokenAmounts = [tokenAmountB, currencyAmountA];
+    }
+
+
     const tokenADecimals = tokenAmounts[0].currency.decimals;
     const tokenBDecimals = tokenAmounts[1].currency.decimals;
     const decimals = tokenADecimals !== tokenBDecimals ? (tokenADecimals + tokenBDecimals) / 2 : tokenADecimals;
