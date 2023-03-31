@@ -58,10 +58,10 @@ export class Pair {
     },
   ) {
     let tokenAmounts = [currencyAmountA, tokenAmountB];
-    // Also, as a rule, sICX is always on the right side (except for sICX/bnUSD). bnUSD is also always on the right side (never any exceptions)
+    // Also, as a rule, sICX is always on the right side (except for sICX/bnUSD). bnUSD is also always on the right side (Exception for sICX/BTCB)
     if (currencyAmountA.currency.symbol === 'bnUSD' ||
       (tokenAmountB.currency.symbol === 'sICX' && currencyAmountA.currency.symbol === 'bnUSD') ||
-      (currencyAmountA.currency.symbol === 'sICX' && tokenAmountB.currency.symbol !== 'bnUSD')) {
+      ((currencyAmountA.currency.symbol === 'sICX' && tokenAmountB.currency.symbol !== 'bnUSD') && tokenAmountB.currency.symbol !== 'BTCB')) {
       tokenAmounts = [tokenAmountB, currencyAmountA];
     }
 
