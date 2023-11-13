@@ -9,6 +9,7 @@ export class Route<TInput extends Currency, TOutput extends Currency> {
   public readonly path: Token[];
   public readonly input: TInput;
   public readonly output: TOutput;
+  public readonly externalNativeTokens: string[] = ['ARCH'];
 
   public constructor(pairs: Pair[], input: TInput, output: TOutput) {
     invariant(pairs.length > 0, 'PAIRS');
@@ -60,7 +61,15 @@ export class Route<TInput extends Currency, TOutput extends Currency> {
     return this.pairs[0].chainId;
   }
 
-  public get pathForSwap(): (string | null)[] {
-    return this.path.map((token: Token) => (token.symbol === 'ICX' ? null : token.address)).slice(1);
+  public get pathForSwap(): (string | null | (string | null)[])[] {
+    return this.path.map((token: Token) => {
+      if ( token.symbol === 'ICX') {
+        return null;
+      }
+      if (this.externalNativeTokens.includes(token.symbol!)) {
+        return [token.address, null];
+      }
+      return token.address;
+    }).slice(1).flat();
   }
 }

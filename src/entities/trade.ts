@@ -411,6 +411,8 @@ export class Trade<TInput extends Currency, TOutput extends Currency, TTradeType
         result = result.multiply(new Fraction(99, 100));
       } else if (inputCurrencySymbol === 'ICX' && outputCurrencySymbol === 'sICX') {
         // result = result.multiply(new Fraction(ONE));
+      } else if (outputCurrencySymbol === 'ARCH') {
+        result = result.multiply(new Fraction(99, 100));
       } else {
         result = result.multiply(new Fraction(997, 1000));
       }
