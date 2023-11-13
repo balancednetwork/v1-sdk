@@ -19,7 +19,7 @@
     "prepublishOnly": "tsdx build"
   },
   "dependencies": {
-    "@balancednetwork/sdk-core": "^1.0.1",
+    "@balancednetwork/sdk-core": "^1.0.4",
     "@ethersproject/address": "^5.0.0",
     "@ethersproject/solidity": "^5.0.0",
     "tiny-invariant": "^1.1.0",

@@ -932,10 +932,10 @@
     "@babel/helper-validator-identifier" "^7.16.7"
     to-fast-properties "^2.0.0"
 
-"@balancednetwork/sdk-core@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@balancednetwork/sdk-core/-/sdk-core-1.0.1.tgz#05eba5030aa20eaddf9b50fc9c7616af97cbfee3"
-  integrity sha512-viWcb6tfbmgfXiaoTFx2iQRxHFpvWBFmOV06CdGHdtxkQBwyhpanJJDL1KrFEhHbMa6OiTlow/LYDEYzrYDmeA==
+"@balancednetwork/sdk-core@^1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@balancednetwork/sdk-core/-/sdk-core-1.0.4.tgz#a9923d733f15ca6c211eb0d38c07a045b7869e79"
+  integrity sha512-ZdnM1NroZa5E8ej3K2d1nPFY9vg/LkoO6UT867P+29wdw5dUN6M71VUWsDsOKEr5BMWm5Fa8eRjBQuK/GVdorw==
   dependencies:
     "@ethersproject/address" "^5.0.2"
     big.js "^5.2.2"
