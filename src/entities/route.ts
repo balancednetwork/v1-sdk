@@ -61,7 +61,7 @@ export class Route<TInput extends Currency, TOutput extends Currency> {
     return this.pairs[0].chainId;
   }
 
-  public get pathForSwap(): (string | null | (string | null)[])[] {
+  public get pathForSwap(): (string | null)[] {
     return this.path.map((token: Token) => {
       if ( token.symbol === 'ICX') {
         return null;
