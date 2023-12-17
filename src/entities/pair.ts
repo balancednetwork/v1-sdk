@@ -234,10 +234,7 @@ export class Pair {
     tokenAmountB: CurrencyAmount<Token>,
   ): CurrencyAmount<Token> {
     invariant(totalSupply.currency.equals(this.liquidityToken), 'LIQUIDITY');
-    const tokenAmounts = tokenAmountA.currency.sortsBefore(tokenAmountB.currency) // does safety checks
-      ? [tokenAmountA, tokenAmountB]
-      : [tokenAmountB, tokenAmountA];
-    invariant(tokenAmounts[0].currency.equals(this.token0) && tokenAmounts[1].currency.equals(this.token1), 'TOKEN');
+    const tokenAmounts = [tokenAmountA, tokenAmountB];
 
     let liquidity: JSBI;
 
